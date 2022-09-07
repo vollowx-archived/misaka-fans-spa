@@ -22,6 +22,11 @@ const routes = {
     title: 'Common button' + titleSeparator + sharedTitle,
     description: 'Common button.',
   },
+  '/components/fab': {
+    page: '/pages/components/fab.html',
+    title: 'FAB' + titleSeparator + sharedTitle,
+    description: 'Floating action button.',
+  },
 };
 
 /**
