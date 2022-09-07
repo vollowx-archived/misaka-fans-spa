@@ -1,0 +1,28 @@
+{
+  "name": "tmd",
+  "version": "0.0.1",
+  "description": "tiny-material docs.",
+  "author": "huge-pancake",
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huge-pancake/tiny-material.git"
+  },
+  "bugs": {
+    "url": "https://github.com/huge-pancake/tiny-material/issues"
+  },
+  "homepage": "https://github.com/huge-pancake/tiny-material#readme",
+  "scripts": {
+    "serve": "web-dev-server --open --node-resolve --watch --port 3999",
+    "check": "tsc",
+    "check:watch": "tsc --watch",
+    "format": "prettier . --write"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.32",
+    "prettier": "2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "type": "module"
+}
