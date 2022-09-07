@@ -7,12 +7,12 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huge-pancake/tiny-material.git"
+    "url": "git+https://github.com/huge-pancake/tmd.git"
   },
   "bugs": {
-    "url": "https://github.com/huge-pancake/tiny-material/issues"
+    "url": "https://github.com/huge-pancake/tmd/issues"
   },
-  "homepage": "https://github.com/huge-pancake/tiny-material#readme",
+  "homepage": "https://github.com/huge-pancake/tmd#readme",
   "scripts": {
     "serve": "web-dev-server --open --node-resolve --watch --port 3999",
     "check": "tsc",
