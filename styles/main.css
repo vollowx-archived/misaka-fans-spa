@@ -48,6 +48,7 @@ sup {
 
 /* Components */
 .filled-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   padding: 0 24px;
