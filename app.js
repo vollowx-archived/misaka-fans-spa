@@ -1,11 +1,11 @@
 const routes = {
-  404: {},
-  '/': {
-    page: '/pages/home.html',
-  },
+  404: { page: '/pages/404.html', },
+  '/': { page: '/pages/home.html', },
   '/about': {},
+  '/links': {},
   '/lab': {},
   '/about/misaka-mikoto': {},
+  '/about/accelerator': {},
 };
 
 /**
@@ -56,3 +56,4 @@ renderPage();
 
 import UpdateTitle from './components/update-title.js';
 import UpdateDescription from './components/update-description.js';
+import LinksCard from './components/links-card.js';

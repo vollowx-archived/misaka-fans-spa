@@ -61,10 +61,32 @@ sup {
   cursor: pointer;
   vertical-align: middle;
 }
+links-card {
+  display: inline-flex;
+}
+links-card a {
+  position: relative;
+  display: block;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface-variant);
+  background-color: var(--md-sys-color-surface-variant);
+  border-radius: 16px;
+}
+links-card a p {
+  margin: 0;
+}
+links-card a p:first-child {
+  margin-bottom: 8px;
+  color: var(--md-sys-color-on-surface);
+}
 
 /* State layer */
 .filled-button::before,
-.drawer li a::before {
+.drawer li a::before,
+links-card a::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -74,11 +96,13 @@ sup {
   pointer-events: none;
 }
 .filled-button:hover::before,
-.drawer li a:hover::before {
+.drawer li a:hover::before,
+links-card a:hover::before {
   opacity: 0.08;
 }
 .filled-button:active::before,
-.drawer li a:active::before {
+.drawer li a:active::before,
+links-card a:active::before {
   opacity: 0.12;
 }
 
@@ -159,4 +183,11 @@ sup {
   .main {
     padding: 0 60px;
   }
+}
+
+.links-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
 }
