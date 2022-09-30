@@ -1,64 +1,29 @@
-const sharedTitle = 'tiny-material docs';
-const titleSeparator = ' | ';
-
 const routes = {
-  404: {
-    page: '/pages/404.html',
-    title: '404 page not found' + titleSeparator + sharedTitle,
-    description: '404 page not found.',
-  },
+  404: {},
   '/': {
     page: '/pages/home.html',
-    title: 'Home' + titleSeparator + sharedTitle,
-    description: 'tiny-material. Providing accessible components with Web Components & Material You',
   },
-  '/about': {
-    page: '/pages/about.html',
-    title: 'About' + titleSeparator + sharedTitle,
-    description: 'About tiny-material.',
-  },
-  '/components/common-button': {
-    page: '/pages/components/common-button.html',
-    title: 'Common button' + titleSeparator + sharedTitle,
-    description: 'Common button.',
-  },
-  '/components/fab': {
-    page: '/pages/components/fab.html',
-    title: 'FAB' + titleSeparator + sharedTitle,
-    description: 'Floating action button.',
-  },
+  '/about': {},
+  '/lab': {},
+  '/about/misaka-mikoto': {},
 };
 
 /**
  * @returns {HTMLElement|null}
  */
 const getRoot = () => {
-  return document.querySelector('#root');
-};
-/**
- * @returns {HTMLMetaElement}
- */
-const getDescription = () => {
-  /** @type {HTMLMetaElement|null} */
-  const el = document.querySelector('meta[name="description"]');
-  if (el) {
-    return el;
-  } else {
-    const newEl = document.createElement('meta');
-    newEl.name = 'description';
-    return newEl;
-  }
+  return document.querySelector('#main-contents');
 };
 
 const renderPage = async () => {
   const location = window.location.pathname;
   const route = routes[location] || routes[404];
-  const response = await fetch(route.page);
+  const response = await fetch(route.page ? route.page : '/pages' + location + '.html');
   const data = await response.text();
   const root = getRoot();
   root ? (root.innerHTML = data) : null;
-  document.title = route.title;
-  getDescription().content = route.description;
+  document.querySelector('[spa-link-active]')?.removeAttribute('spa-link-active');
+  document.querySelector(`[href="${location}"]`)?.setAttribute('spa-link-active', '');
 };
 
 /**
@@ -77,15 +42,17 @@ const useRoute = (e) => {
  */
 const handleClick = (e) => {
   // @ts-ignore
-  if (e.target.matches('a')) {
+  if (e.target.hasAttribute('spa-link')) {
     e.preventDefault();
     useRoute(e);
   }
 };
-const aside = document.querySelector('aside');
-aside?.addEventListener('click', handleClick);
+window.addEventListener('click', handleClick);
 
 window.onpopstate = renderPage;
 // @ts-ignore
 window.useRoute = useRoute;
 renderPage();
+
+import UpdateTitle from './components/update-title.js';
+import UpdateDescription from './components/update-description.js';

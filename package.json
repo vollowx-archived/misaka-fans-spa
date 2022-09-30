@@ -1,26 +1,25 @@
 {
-  "name": "tmd",
+  "name": "misaka-fans-spa",
   "version": "0.0.1",
-  "description": "tiny-material docs.",
+  "description": "misaka-fans with single-page-application mode.",
   "author": "huge-pancake",
   "license": "MIT",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huge-pancake/tmd.git"
+    "url": "git+https://github.com/huge-pancake/misaka-fans-spa.git"
   },
   "bugs": {
-    "url": "https://github.com/huge-pancake/tmd/issues"
+    "url": "https://github.com/huge-pancake/misaka-fans-spa/issues"
   },
-  "homepage": "https://github.com/huge-pancake/tmd#readme",
+  "homepage": "https://github.com/huge-pancake/misaka-fans-spa#readme",
   "scripts": {
-    "serve": "web-dev-server --open --node-resolve --watch --port 3999",
+    "serve": "netlify dev",
     "check": "tsc",
     "check:watch": "tsc --watch",
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.1.32",
     "prettier": "2.7.1",
     "typescript": "^4.7.4"
   },

@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | tint-material docs</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title></title>
+    <meta name="description" content="" />
   </head>
   <body>
-    <aside>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/components/common-button">Common button</a>
-      <a href="/components/fab">Floating action button</a>
+    <a class="jump-to-contents filled-button label-large" href="#main-contents">跳转到内容</a>
+    <aside class="drawer" aria-label="侧边栏，包含全站所有页面的链接和一些控制元素">
+      <ul class="label-large" aria-label="根目录下的页面">
+        <li><a spa-link href="/">主页</a></li>
+        <li><a spa-link href="/about">关于</a></li>
+        <li><a spa-link href="/lab">实验室</a></li>
+      </ul>
+      <ul class="label-large" aria-label="“关于”目录下的页面">
+        <li><a spa-link href="/about/misaka-mikoto">关于御坂美琴</a></li>
+      </ul>
     </aside>
-    <main id="root"></main>
+    <!-- No any overview now, so aria-hidden is true -->
+    <nav class="overview" aria-hidden="true"></nav>
+    <main class="main" id="main-contents"></main>
 
-    <script src="/app.js"></script>
+    <script src="/app.js" type="module"></script>
   </body>
 </html>
