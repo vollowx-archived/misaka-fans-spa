@@ -107,6 +107,11 @@ sup {
 .drawer ul:not(:last-child) {
   margin-bottom: 16px;
 }
+.drawer h2 {
+  margin-block-start: 8px;
+  margin-block-end: 8px;
+  margin-inline-start: 16px;
+}
 .drawer li {
   list-style: none;
 }
