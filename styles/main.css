@@ -8,10 +8,12 @@
 * {
   box-sizing: border-box;
 }
-*:focus-visible {
+/* a:focus-visible,
+button:focus-visible,
+input[type='checkbox']:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--md-sys-color-tertiary-container), 0 0 0 4px var(--md-sys-color-tertiary);
-}
+} */
 html,
 body {
   height: 100%;
