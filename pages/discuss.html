@@ -1,0 +1,23 @@
+<update-title>留言板</update-title>
+<update-description>留言板，在这里留下你想说的话，和大家一起讨论！</update-description>
+
+<h1>留言板</h1>
+
+<div style="margin-top: 32px;" id="discuss-root"></div>
+
+<link href="https://unpkg.com/artalk@2.3.4/dist/Artalk.css" rel="stylesheet" />
+<script type="module" dynamic-run>
+  import 'https://unpkg.com/artalk@2.3.4/dist/Artalk.js';
+  new Artalk({
+    el: '#discuss-root',
+    pageKey: '233',
+    pageTitle: 'misaka-mikoto.jp-comment-server',
+    server: 'https://chat.mashiro.pub:23366',
+    site: 'lolimashiro-comment-sys',
+    emoticons: [
+      'https://emotion-new.acs.pw/aru/artalk.json',
+      'https://emotion-new.acs.pw/heo/artalk.json',
+      'https://emotion-new.acs.pw/bili_tv/artalk.json',
+    ],
+  });
+</script>
