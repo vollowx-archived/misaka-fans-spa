@@ -48,8 +48,8 @@ export default class ImageMasonry extends HTMLElement {
       <span class="divider _1" aria-hidden="true"></span>
       <span class="divider _2" aria-hidden="true"></span>
     `;
-    this.loadData();
     window.addEventListener('resize', this.handleResize.bind(this));
+    this.loadData();
   }
   get divider1() {
     return this.querySelector('.divider._1');
@@ -61,20 +61,24 @@ export default class ImageMasonry extends HTMLElement {
   /**
    * @returns {number}
    */
-  getColNumber() {
+  getColNum() {
     const width = window.innerWidth;
-    const returns =
+    const _colNum =
       width > 1580 ? 3 : width > 1200 ? 2 : width > 1000 ? 3 : width > 900 ? 2 : width > 780 ? 3 : width > 480 ? 2 : 1;
-    this.setAttribute('col', `${returns}`);
-    this.style.setProperty('--image-masonry-image-width', 100 / returns + '%');
-    this.style.setProperty('--image-masonry-images-a-col', `${returns}`);
-    return returns;
+    return _colNum;
+  }
+  updColNum() {
+    const _colNum = this.getColNum();
+    this.setAttribute('col', `${_colNum}`);
+    this.style.setProperty('--image-masonry-image-width', 100 / _colNum + '%');
+    this.style.setProperty('--image-masonry-images-a-col', `${_colNum}`);
+    return _colNum;
   }
   get colHeights() {
     let _colHeights = [0, 0, 0, 0];
     this.querySelectorAll(':scope > div').forEach((container, index) => {
       const containerHeight = container.clientHeight;
-      const colIndex = (index + 1) % this.getColNumber();
+      const colIndex = (index + 1) % this.getColNum();
       _colHeights[colIndex] += containerHeight;
     });
     return _colHeights;
@@ -140,6 +144,7 @@ export default class ImageMasonry extends HTMLElement {
     });
   }
   updateHeight() {
+    this.updColNum();
     this.style.height = Math.max(...this.colHeights) + 10 + 'px';
   }
   handleResize() {

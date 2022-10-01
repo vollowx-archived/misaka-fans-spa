@@ -300,6 +300,7 @@ image-masonry {
   counter-reset: cards;
 }
 image-masonry div {
+  display: flex;
   width: calc(
     var(--image-masonry-image-width) - (var(--image-masonry-images-a-col) - 1) * var(--image-masonry-gap) /
       var(--image-masonry-images-a-col)
@@ -315,6 +316,7 @@ image-masonry div.show {
 }
 image-masonry img {
   width: 100%;
+  border-radius: 20px;
 }
 image-masonry .divider {
   display: block;
