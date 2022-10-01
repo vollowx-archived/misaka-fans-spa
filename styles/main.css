@@ -364,7 +364,7 @@ image-masonry div::before {
 @keyframes slideIn {
   from {
     filter: opacity(0);
-    transform: translateY(8px);
+    transform: translateY(32px);
   }
   to {
     filter: opacity(1);
