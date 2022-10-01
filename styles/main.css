@@ -2,6 +2,7 @@
 
 :root {
   accent-color: var(--md-sys-color-tertiary);
+  --image-masonry-gap: 8px;
 }
 
 * {
@@ -253,6 +254,88 @@ links-card a p:first-child {
   margin-bottom: 8px;
   color: var(--md-sys-color-on-surface);
 }
+image-masonry {
+  margin-top: 32px;
+  width: 100%;
+  min-height: 100%;
+  /* height: 10000px; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  counter-reset: cards;
+}
+image-masonry div {
+  width: calc(
+    var(--image-masonry-image-width) - (var(--image-masonry-images-a-col) - 1) * var(--image-masonry-gap) /
+      var(--image-masonry-images-a-col)
+  );
+  padding-bottom: var(--image-masonry-gap);
+  position: relative;
+}
+image-masonry div.show {
+  animation-name: slideIn;
+  animation-duration: 180ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0, 1, 0, 1);
+}
+image-masonry img {
+  width: 100%;
+}
+image-masonry .divider {
+  display: block;
+  flex-basis: 100%;
+  width: var(--image-masonry-gap);
+}
+image-masonry ._1 {
+  order: 1;
+}
+image-masonry ._2 {
+  order: 2;
+}
+image-masonry div::before {
+  counter-increment: cards;
+  content: counter(cards);
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: 0.875rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+[col='2'] div:nth-of-type(2n + 1) {
+  order: 1;
+}
+[col='2'] div:nth-of-type(2n + 2) {
+  order: 2;
+}
+[col='3'] div:nth-of-type(3n + 1) {
+  order: 1;
+}
+[col='3'] div:nth-of-type(3n + 2) {
+  order: 2;
+}
+[col='3'] div:nth-of-type(3n + 3) {
+  order: 3;
+}
+
+@keyframes slideIn {
+  from {
+    filter: opacity(0);
+    transform: translateY(8px);
+  }
+  to {
+    filter: opacity(1);
+    transform: translateY(0);
+  }
+}
 
 /* State layer */
 .filled-button::before,
@@ -296,6 +379,12 @@ links-card a:active::before {
   border-start-end-radius: 16px;
   border-end-end-radius: 16px;
   border-inline-end: 1px solid var(--md-sys-color-outline);
+}
+@media (max-width: 1200px) {
+  .drawer {
+    position: fixed;
+    display: none;
+  }
 }
 .drawer ul {
   margin: 0;

@@ -6,6 +6,7 @@ const routes = {
   '/lab': {},
   '/about/misaka-mikoto': {},
   '/about/accelerator': {},
+  '/images/misaka-mikoto': {},
 };
 
 /**
@@ -74,3 +75,4 @@ renderPage();
 import UpdateTitle from './components/update-title.js';
 import UpdateDescription from './components/update-description.js';
 import LinksCard from './components/links-card.js';
+import ImageMasonry from './components/image-masonry.js';
