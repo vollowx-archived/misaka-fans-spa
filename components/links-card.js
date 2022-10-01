@@ -7,7 +7,7 @@ export default class LinksCard extends HTMLElement {
     // this.attachShadow({ mode: 'open' });
     this.innerHTML = /* html */`
       <a href="${this.getAttribute('href')}" target="_blank">
-        <p class="title-medium">${this.getAttribute('title')}</p>
+        <p class="title-large">${this.getAttribute('title')}</p>
         <p class="body-large">${this.getAttribute('desc')}</p>
       </a>
     `;
