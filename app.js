@@ -1,6 +1,6 @@
 const routes = {
-  404: { page: '/pages/404.html', },
-  '/': { page: '/pages/home.html', },
+  404: { page: '/pages/404.html' },
+  '/': { page: '/pages/home.html' },
   '/about': {},
   '/links': {},
   '/lab': {},
@@ -14,6 +14,23 @@ const routes = {
 const getRoot = () => {
   return document.querySelector('#main-contents');
 };
+/**
+ * @param {string} location
+ */
+const updateSPALinkActive = (location) => {
+  document.querySelector('[spa-link-active]')?.removeAttribute('spa-link-active');
+  document.querySelector(`[href="${location}"]`)?.setAttribute('spa-link-active', '');
+};
+/**
+ * @param {HTMLElement} root
+ */
+const addClasses = (root) => {
+  root.querySelectorAll('h1').forEach((el) => el.classList.add('display-large'));
+  root.querySelectorAll('h2').forEach((el) => el.classList.add('display-medium'));
+  root.querySelectorAll('h3').forEach((el) => el.classList.add('display-small'));
+  root.querySelectorAll('p, ul').forEach((el) => el.classList.add('body-large'));
+  root.querySelectorAll('.block').forEach((el) => el.setAttribute('role', 'region'));
+};
 
 const renderPage = async () => {
   const location = window.location.pathname;
@@ -22,8 +39,8 @@ const renderPage = async () => {
   const data = await response.text();
   const root = getRoot();
   root ? (root.innerHTML = data) : null;
-  document.querySelector('[spa-link-active]')?.removeAttribute('spa-link-active');
-  document.querySelector(`[href="${location}"]`)?.setAttribute('spa-link-active', '');
+  root ? addClasses(root) : null;
+  updateSPALinkActive(location);
 };
 
 /**

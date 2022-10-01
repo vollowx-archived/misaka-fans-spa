@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="/styles/main.css" />
     <title></title>
     <meta name="description" content="" />
@@ -25,8 +26,12 @@
       </ul>
     </aside>
     <!-- No any overview now, so aria-hidden is true -->
-    <nav class="overview" aria-hidden="true"></nav>
-    <main class="main" id="main-contents"></main>
+    <main class="main-and-overview">
+      <nav class="overview" aria-hidden="true">
+        <h2 class="title-medium">概览</h2>
+      </nav>
+      <div class="main" id="main-contents"></div>
+    </main>
 
     <script src="/app.js" type="module"></script>
   </body>
