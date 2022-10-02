@@ -141,6 +141,7 @@ export default class ImageMasonry extends HTMLElement {
       img.onerror = reject;
       img.src = (personInfo['prefix'] || '') + imageInfo[0];
       img.alt = imageInfo[1];
+      img.title = imageInfo[1];
     });
   }
   updateHeight() {
