@@ -6,6 +6,7 @@
   --at-color-border: var(--md-sys-color-outline) !important;
   --at-color-bg: var(--md-sys-color-surface) !important;
   --at-color-bg-transl: var(--md-sys-color-surface-variant) !important;
+  --at-color-bg-grey-transl: var(--md-sys-color-surface-variant) !important;
   --at-color-bg-grey: var(--md-sys-color-surface-variant) !important;
   --at-color-main: var(--md-sys-color-primary) !important;
   --at-color-gradient: linear-gradient(transparent, #ffffff0f) !important;
