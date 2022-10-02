@@ -102,6 +102,45 @@ window.onpopstate = renderPage;
 window.useRoute = useRoute;
 renderPage();
 
+/** @type {HTMLElement|null} */
+const drawer = document.querySelector('.drawer');
+/** @type {HTMLButtonElement|null} */
+const drawerTrigger = document.querySelector('.drawer__trigger');
+/** @type {HTMLButtonElement|null} */
+const drawerCloser = document.querySelector('.drawer__closer');
+/** @type {HTMLElement|null} */
+const drawerOverlap = document.querySelector('.drawer__overlap');
+const toggleDrawerOpened = () => {
+  document.body.classList.contains('drawer--opened') ? closeDrawer() : openDrawer();
+};
+const openDrawer = () => {
+  document.body.classList.add('drawer--opened');
+  drawer?.focus();
+};
+const closeDrawer = () => {
+  document.body.classList.remove('drawer--opened');
+  drawerTrigger?.focus();
+};
+/**
+ * @param {MouseEvent} e 
+ */
+const handleDrawerClick = (e) => {
+  if (window.innerWidth >= 1200) return;
+  /** @type {string} */
+  // @ts-ignore
+  const tagName = e.target.tagName;
+  let flag = false;
+  // @ts-ignore
+  if (tagName === 'BUTTON' && !e.target.disabled && !e.target.classList.contains('drawer__closer')) flag = true;
+  // @ts-ignore
+  else if (tagName === 'A' && e.target.href) flag = true;
+  if (flag) closeDrawer();
+}
+drawerTrigger?.addEventListener('click', toggleDrawerOpened);
+drawerCloser?.addEventListener('click', closeDrawer);
+drawerOverlap?.addEventListener('click', toggleDrawerOpened);
+drawer?.addEventListener('click', handleDrawerClick);
+
 import UpdateTitle from './components/update-title.js';
 import UpdateDescription from './components/update-description.js';
 import ConCard from './components/con-card.js';

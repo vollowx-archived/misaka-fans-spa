@@ -1,0 +1,142 @@
+body {
+  display: flex;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+}
+h2,
+h4,
+h5,
+h6 {
+  margin: 32px 0;
+}
+p {
+  -webkit-margin-before: 1em;
+  margin-block-start: 1em;
+  -webkit-margin-after: 1em;
+  margin-block-end: 1em;
+}
+.main ul {
+  margin-inline-start: 22px;
+  list-style: none;
+}
+.main ul li {
+  position: relative;
+  margin-bottom: 16px;
+}
+.main ul li:nth-child(2) {
+  --rotation: 2;
+}
+.main ul li:nth-child(3n) {
+  --rotation: 5;
+}
+.main ul li:nth-child(3n + 1) {
+  --rotation: 7;
+}
+.main ul li:nth-child(3n + 2) {
+  --rotation: 4;
+}
+.main ul li:nth-child(4n) {
+  --rotation: 9;
+}
+.main ul li:nth-child(4n + 1) {
+  --rotation: 6;
+}
+.main ul li:nth-child(4n + 3) {
+  --rotation: 3;
+}
+.main ul li svg {
+  display: inline-block;
+  position: absolute;
+  margin-block-start: 6px;
+  margin-inline-start: -16px;
+  transform: rotate(calc(var(--rotation) * 36deg));
+  fill: currentColor;
+}
+
+.block {
+  display: grid;
+  position: relative;
+  max-width: min(1024px, calc(100vw - 2 * 40px));
+  margin: 0 auto 152px;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(calc(25% - 20px), 1fr));
+  overflow-x: auto;
+}
+.block:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  border-radius: 4px;
+}
+a:hover {
+  text-decoration: underline;
+}
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 40px;
+  text-decoration: none;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+}
+.button.filled {
+  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary);
+}
+.fab {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  text-decoration: none;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+}
+.fab svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+.fab.primary {
+  color: var(--md-sys-color-on-primary-container);
+  background-color: var(--md-sys-color-primary-container);
+}
+.icon-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.25rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+}
+.icon-button.standard {
+  color: var(--md-sys-color-primary);
+  background-color: transparent;
+}
+.icon-button svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
