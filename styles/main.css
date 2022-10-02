@@ -247,14 +247,14 @@ links-card a:active::before {
   top: 16px;
 }
 
-.drawer__trigger {
+.drawer__opener {
   position: fixed;
   right: 16px;
   bottom: 16px;
   z-index: 998;
   display: none;
 }
-[dir='rtl'] .drawer__trigger {
+[dir='rtl'] .drawer__opener {
   left: 16px;
   right: auto;
 }
@@ -272,6 +272,7 @@ links-card a:active::before {
   border-start-end-radius: 16px;
   border-end-end-radius: 16px;
   transition: transform 240ms cubic-bezier(0.4, 0.2, 0, 1);
+  will-change: transform;
   z-index: 1000;
 }
 .drawer::before {
@@ -291,11 +292,13 @@ links-card a:active::before {
   transition: opacity 240ms cubic-bezier(0.4, 0.2, 0, 1);
   opacity: 0;
   pointer-events: none;
+  will-change: opacity;
   z-index: 999;
 }
 @media (max-width: 1200px) {
   .drawer {
     position: fixed;
+    display: none;
     transform: translateX(-100%);
   }
   [dir='rtl'] .drawer {
@@ -304,19 +307,29 @@ links-card a:active::before {
   .drawer::before {
     opacity: 0.08;
   }
-  .drawer__trigger,
+  .drawer__opener,
   .drawer__closer {
     display: inline-flex;
   }
   .drawer--opened .drawer {
+    display: block;
     transform: translateX(0);
   }
-  .drawer--opened .drawer::after {
-    opacity: 0.32;
+  .open-animating .drawer {
+    display: block;
   }
   .drawer--opened .drawer__overlap {
     pointer-events: auto;
     opacity: 0.32;
+  }
+  .close-animating .drawer {
+    transform: translateX(-100%);
+  }
+  [dir='rtl'] .close-animating .drawer {
+    transform: translateX(100%);
+  }
+  .close-animating .drawer__overlap {
+    opacity: 0;
   }
 }
 .drawer ul {

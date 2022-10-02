@@ -102,27 +102,40 @@ window.onpopstate = renderPage;
 window.useRoute = useRoute;
 renderPage();
 
+const body = document.body;
 /** @type {HTMLElement|null} */
 const drawer = document.querySelector('.drawer');
 /** @type {HTMLButtonElement|null} */
-const drawerTrigger = document.querySelector('.drawer__trigger');
+const drawerOpener = document.querySelector('.drawer__opener');
 /** @type {HTMLButtonElement|null} */
 const drawerCloser = document.querySelector('.drawer__closer');
 /** @type {HTMLElement|null} */
 const drawerOverlap = document.querySelector('.drawer__overlap');
 const toggleDrawerOpened = () => {
-  document.body.classList.contains('drawer--opened') ? closeDrawer() : openDrawer();
+  body.classList.contains('drawer--opened') ? closeDrawer() : openDrawer();
 };
 const openDrawer = () => {
-  document.body.classList.add('drawer--opened');
-  drawer?.focus();
+  setTimeout(() => {
+    body.classList.add('open-animating');
+    setTimeout(() => {
+      body.classList.remove('open-animating');
+      body.classList.add('drawer--opened');
+    }, 10);
+    drawer?.focus();
+  }, 10);
 };
 const closeDrawer = () => {
-  document.body.classList.remove('drawer--opened');
-  drawerTrigger?.focus();
+  setTimeout(() => {
+    body.classList.add('close-animating');
+    setTimeout(() => {
+      body.classList.remove('close-animating');
+      body.classList.remove('drawer--opened');
+    }, 240);
+  }, 10);
+  drawerOpener?.focus();
 };
 /**
- * @param {MouseEvent} e 
+ * @param {MouseEvent} e
  */
 const handleDrawerClick = (e) => {
   if (window.innerWidth >= 1200) return;
@@ -135,11 +148,26 @@ const handleDrawerClick = (e) => {
   // @ts-ignore
   else if (tagName === 'A' && e.target.href) flag = true;
   if (flag) closeDrawer();
-}
-drawerTrigger?.addEventListener('click', toggleDrawerOpened);
+};
+/**
+ * @param {KeyboardEvent} e
+ */
+const handleDrawerKeyDown = (e) => {
+  const key = e.key;
+  switch (key) {
+    case 'Escape':
+    case 'ESC':
+      closeDrawer();
+      break;
+    default:
+      break;
+  }
+};
+drawerOpener?.addEventListener('click', openDrawer);
 drawerCloser?.addEventListener('click', closeDrawer);
 drawerOverlap?.addEventListener('click', toggleDrawerOpened);
 drawer?.addEventListener('click', handleDrawerClick);
+drawer?.addEventListener('keydown', handleDrawerKeyDown);
 
 import UpdateTitle from './components/update-title.js';
 import UpdateDescription from './components/update-description.js';
