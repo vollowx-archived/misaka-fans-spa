@@ -1,0 +1,90 @@
+.artalk,
+.atk-layer-wrap {
+  --at-color-font: var(--md-sys-color-on-surface) !important;
+  --at-color-deep: var(--md-sys-color-on-surface-variant) !important;
+  --at-color-meta: var(--md-sys-color-on-surface-variant) !important;
+  --at-color-border: var(--md-sys-color-outline) !important;
+  --at-color-bg: var(--md-sys-color-surface) !important;
+  --at-color-bg-transl: var(--md-sys-color-surface-variant) !important;
+  --at-color-bg-grey: var(--md-sys-color-surface-variant) !important;
+  --at-color-main: var(--md-sys-color-primary) !important;
+  --at-color-gradient: linear-gradient(transparent, #ffffff0f) !important;
+}
+.atk-main-editor {
+  border-radius: 24px !important;
+}
+.atk-list-read-more {
+  border: none !important;
+}
+.atk-comment .atk-height-limit-btn {
+  color: var(--md-sys-color-primary) !important;
+}
+.atk-main-editor > .atk-bottom .atk-send-btn,
+.atk-list-read-more .atk-list-read-more-inner {
+  color: var(--md-sys-color-on-primary) !important;
+}
+.atk-main-editor > .atk-bottom .atk-send-btn,
+.atk-list-read-more .atk-list-read-more-inner,
+.atk-comment .atk-height-limit-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: auto !important;
+  height: 40px !important;
+  border-radius: 9999px !important;
+  vertical-align: middle;
+}
+.atk-main-editor > .atk-bottom .atk-send-btn:focus-visible {
+  outline: 3px solid var(--md-sys-color-on-surface) !important;
+}
+.atk-main-editor > .atk-bottom .atk-send-btn:active {
+  opacity: 1 !important;
+}
+.atk-main-editor > .atk-bottom .atk-plug-btn {
+  position: relative;
+  line-height: unset !important;
+  color: var(--md-sys-color-on-surface) !important;
+}
+.atk-main-editor > .atk-bottom .atk-plug-btn i {
+  margin-left: unset !important;
+  margin-inline-start: 4px !important;
+  margin-inline-end: -4px;
+  vertical-align: middle !important;
+}
+.atk-main-editor > .atk-bottom .atk-plug-btn i svg.markdown path {
+  fill: var(--md-sys-color-on-surface) !important;
+}
+.atk-main-editor > .atk-bottom .atk-plug-btn:hover {
+  background-color: transparent !important;
+}
+.atk-comment > .atk-main > .atk-header .atk-ua,
+.atk-main-editor > .atk-bottom .atk-plug-btn {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 0 12px !important;
+  height: 32px;
+  border-radius: 8px !important;
+}
+.atk-loading-spinner svg circle {
+  stroke-width: 4px;
+}
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.56;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.56;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.56;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.56;
+}

@@ -1,4 +1,5 @@
 @import url(./theme.css);
+@import url(./artalk-tweaks.css);
 
 :root {
   accent-color: var(--md-sys-color-tertiary);
@@ -219,6 +220,21 @@ rb[data-id='template-ruby']::before,
 }
 
 /* Components */
+.atk-main-editor > .atk-bottom .atk-send-btn::after,
+.atk-comment .atk-height-limit-btn::after,
+.filled-button::after,
+.standard-icon-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 48px;
+  width: 100%;
+  min-height: 48px;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
 .filled-button {
   position: relative;
   display: inline-flex;
@@ -232,6 +248,27 @@ rb[data-id='template-ruby']::before,
   border-radius: 9999px;
   cursor: pointer;
   vertical-align: middle;
+}
+.standard-icon-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.25rem;
+  color: var(--md-sys-color-primary);
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.standard-icon-button svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
 }
 con-card {
   padding: 0 16px;
@@ -259,12 +296,6 @@ con-card .info {
 }
 con-card .info p {
   margin: 0;
-}
-con-card .info svg {
-  fill: currentColor;
-  width: 1rem;
-  height: 1rem;
-  vertical-align: middle;
 }
 con-card .content {
   margin-top: 16px;
@@ -377,7 +408,10 @@ image-masonry div::before {
 }
 
 /* State layer */
+.atk-main-editor > .atk-bottom .atk-send-btn::before,
+.atk-main-editor>.atk-bottom .atk-plug-btn::before,
 .filled-button::before,
+.standard-icon-button::before,
 .drawer li a::before,
 links-card a::before {
   content: '';
@@ -388,12 +422,18 @@ links-card a::before {
   opacity: 0;
   pointer-events: none;
 }
+.atk-main-editor > .atk-bottom .atk-send-btn:hover::before,
+.atk-main-editor>.atk-bottom .atk-plug-btn:hover::before,
 .filled-button:hover::before,
+.standard-icon-button:hover::before,
 .drawer li a:hover::before,
 links-card a:hover::before {
   opacity: 0.08;
 }
+.atk-main-editor > .atk-bottom .atk-send-btn:active:before,
+.atk-main-editor>.atk-bottom .atk-plug-btn:active::before,
 .filled-button:active::before,
+.standard-icon-button:active:before,
 .drawer li a:active::before,
 links-card a:active::before {
   opacity: 0.12;
@@ -477,7 +517,7 @@ links-card a:active::before {
 .main-and-overview {
   display: flex;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .main {
   margin: 0 auto;
@@ -496,6 +536,6 @@ links-card a:active::before {
 .links-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 30%));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 8px;
 }
