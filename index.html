@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
+    <script src="https://unpkg.com/tabbable/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/focus-trap/dist/focus-trap.umd.js"></script>
     <link rel="stylesheet" href="/styles/main.css" />
     <title></title>
     <meta name="description" content="" />
@@ -16,31 +18,35 @@
         <path d="M3 18v-2h18v2Zm0-5v-2h18v2Zm0-5V6h18v2Z"></path>
       </svg>
     </button>
-    <div class="drawer__overlap" aria-hidden="true"></div>
-    <aside class="drawer" aria-label="侧边栏，包含全站所有页面的链接和一些控制元素" tabindex="-1">
-      <button class="icon-button standard drawer__closer" aria-label="关闭侧边栏" title="关闭侧边栏">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"></path>
-        </svg>
-      </button>
-      <ul class="label-large" aria-label="根目录下的页面">
-        <li><a spa-link href="/" aria-label="主页">/</a></li>
-        <li><a spa-link href="/discuss">留言板</a></li>
-        <li><a spa-link href="/about">关于</a></li>
-        <li><a spa-link href="/links">友情链接</a></li>
-        <li><a spa-link href="/lab">实验室</a></li>
-      </ul>
-      <ul class="label-large" aria-label="“百科”目录下的页面">
-        <li><a spa-link href="/wiki" aria-label="百科索引">/wiki</a></li>
-        <li><a spa-link href="/wiki/misaka-mikoto">御坂美琴</a></li>
-        <li><a spa-link href="/wiki/shirai-kuroko">白井黒子</a></li>
-        <li><a spa-link href="/wiki/accelerator">一方通行</a></li>
-      </ul>
-      <ul class="label-large" aria-label="“图片墙”目录下的页面">
-        <li><a spa-link href="/images" aria-label="图片墙索引">/images</a></li>
-        <li><a spa-link href="/images/misaka-mikoto">御坂美琴</a></li>
-      </ul>
-    </aside>
+    <div class="drawer__root">
+      <div class="drawer__overlap" aria-hidden="true"></div>
+      <aside class="drawer" aria-label="侧边栏，包含全站所有页面的链接和一些控制元素" tabindex="-1">
+        <button class="icon-button standard drawer__closer" aria-label="关闭侧边栏" title="关闭侧边栏">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"
+            ></path>
+          </svg>
+        </button>
+        <ul class="label-large" aria-label="根目录下的页面">
+          <li><a spa-link href="/" aria-label="主页">/</a></li>
+          <li><a spa-link href="/discuss">留言板</a></li>
+          <li><a spa-link href="/about">关于</a></li>
+          <li><a spa-link href="/links">友情链接</a></li>
+          <li><a spa-link href="/lab">实验室</a></li>
+        </ul>
+        <ul class="label-large" aria-label="“百科”目录下的页面">
+          <li><a spa-link href="/wiki" aria-label="百科索引">/wiki</a></li>
+          <li><a spa-link href="/wiki/misaka-mikoto">御坂美琴</a></li>
+          <li><a spa-link href="/wiki/shirai-kuroko">白井黒子</a></li>
+          <li><a spa-link href="/wiki/accelerator">一方通行</a></li>
+        </ul>
+        <ul class="label-large" aria-label="“图片墙”目录下的页面">
+          <li><a spa-link href="/images" aria-label="图片墙索引">/images</a></li>
+          <li><a spa-link href="/images/misaka-mikoto">御坂美琴</a></li>
+        </ul>
+      </aside>
+    </div>
     <!-- No any overview now, so aria-hidden is true -->
     <main class="main-and-overview">
       <nav class="overview" aria-hidden="true"></nav>

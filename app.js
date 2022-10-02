@@ -102,37 +102,46 @@ window.onpopstate = renderPage;
 window.useRoute = useRoute;
 renderPage();
 
-const body = document.body;
+/** @type {HTMLDivElement|null} */
+const drawerRoot = document.querySelector('.drawer__root');
 /** @type {HTMLElement|null} */
 const drawer = document.querySelector('.drawer');
+// @ts-ignore
+const drawerTrap = focusTrap.createFocusTrap(drawerRoot);
+const updateDrawerFocusTrap = () => {
+  if (window.innerWidth < 1200 && drawerRoot?.classList.contains('drawer--opened')) {
+    drawerTrap.activate();
+  } else {
+    drawerTrap.deactivate();
+  }
+};
 /** @type {HTMLButtonElement|null} */
 const drawerOpener = document.querySelector('.drawer__opener');
 /** @type {HTMLButtonElement|null} */
 const drawerCloser = document.querySelector('.drawer__closer');
 /** @type {HTMLElement|null} */
 const drawerOverlap = document.querySelector('.drawer__overlap');
-const toggleDrawerOpened = () => {
-  body.classList.contains('drawer--opened') ? closeDrawer() : openDrawer();
-};
 const openDrawer = () => {
   setTimeout(() => {
-    body.classList.add('open-animating');
+    drawerRoot?.classList.add('open-animating');
     setTimeout(() => {
-      body.classList.remove('open-animating');
-      body.classList.add('drawer--opened');
+      drawerRoot?.classList.remove('open-animating');
+      drawerRoot?.classList.add('drawer--opened');
+      drawer?.focus();
+      updateDrawerFocusTrap();
     }, 10);
-    drawer?.focus();
   }, 10);
 };
 const closeDrawer = () => {
   setTimeout(() => {
-    body.classList.add('close-animating');
+    drawerRoot?.classList.add('close-animating');
     setTimeout(() => {
-      body.classList.remove('close-animating');
-      body.classList.remove('drawer--opened');
+      drawerRoot?.classList.remove('close-animating');
+      drawerRoot?.classList.remove('drawer--opened');
+      drawerOpener?.focus();
+      updateDrawerFocusTrap();
     }, 240);
   }, 10);
-  drawerOpener?.focus();
 };
 /**
  * @param {MouseEvent} e
@@ -165,9 +174,12 @@ const handleDrawerKeyDown = (e) => {
 };
 drawerOpener?.addEventListener('click', openDrawer);
 drawerCloser?.addEventListener('click', closeDrawer);
-drawerOverlap?.addEventListener('click', toggleDrawerOpened);
+drawerOverlap?.addEventListener('click', closeDrawer);
 drawer?.addEventListener('click', handleDrawerClick);
 drawer?.addEventListener('keydown', handleDrawerKeyDown);
+
+window.addEventListener('resize', updateDrawerFocusTrap);
+updateDrawerFocusTrap();
 
 import UpdateTitle from './components/update-title.js';
 import UpdateDescription from './components/update-description.js';
