@@ -6,6 +6,7 @@
 :root {
   accent-color: var(--md-sys-color-tertiary);
   --image-masonry-gap: 8px;
+  -webkit-tap-highlight-color: transparent;
 }
 /* box-shadow: 0 0 0 2px var(--md-sys-color-tertiary-container), 0 0 0 4px var(--md-sys-color-tertiary); */
 
