@@ -59,11 +59,12 @@
   background-color: transparent !important;
 }
 .atk-comment > .atk-main > .atk-header .atk-ua,
-.atk-main-editor > .atk-bottom .atk-plug-btn {
+.atk-main-editor > .atk-bottom .atk-plug-btn,
+.atk-send-reply {
   display: inline-flex !important;
   align-items: center;
   padding: 0 12px !important;
-  height: 32px;
+  height: 32px !important;
   border-radius: 8px !important;
 }
 .atk-loading-spinner svg circle {
