@@ -176,7 +176,7 @@ image-masonry div::before {
   direction: ltr;
   display: table;
   border-collapse: collapse;
-  margin: 32px auto 0 auto;
+  margin: 72px auto;
   background-color: transparent;
 }
 .saying .middle {

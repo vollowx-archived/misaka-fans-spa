@@ -11,6 +11,11 @@ const routes = {
   '/wiki/accelerator': {},
   '/images': {},
   '/images/misaka-mikoto': {},
+  '/store': {},
+  '/store/mbc': {},
+  '/store/mmsql': {},
+  '/store/mvps': {},
+  '/store/ssfs': {},
 };
 
 /**
