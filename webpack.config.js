@@ -22,6 +22,9 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimizer: [new CssMinizerPlugin()],
+    minimizer: [
+      `...`,
+      new CssMinizerPlugin(),
+    ],
   },
 };
