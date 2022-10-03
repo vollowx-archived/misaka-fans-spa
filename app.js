@@ -127,26 +127,22 @@ const drawerCloser = document.querySelector('.drawer__closer');
 /** @type {HTMLElement|null} */
 const drawerOverlap = document.querySelector('.drawer__overlap');
 const openDrawer = () => {
+  drawerRoot?.classList.add('open-animating');
   setTimeout(() => {
-    drawerRoot?.classList.add('open-animating');
-    setTimeout(() => {
-      drawerRoot?.classList.remove('open-animating');
-      drawerRoot?.classList.add('drawer--opened');
-      drawer?.focus();
-      updateDrawerFocusTrap();
-    }, 10);
-  }, 10);
+    drawerRoot?.classList.remove('open-animating');
+    drawerRoot?.classList.add('drawer--opened');
+    drawer?.focus();
+    updateDrawerFocusTrap();
+  }, 16);
 };
 const closeDrawer = () => {
+  drawerRoot?.classList.add('close-animating');
   setTimeout(() => {
-    drawerRoot?.classList.add('close-animating');
-    setTimeout(() => {
-      drawerRoot?.classList.remove('close-animating');
-      drawerRoot?.classList.remove('drawer--opened');
-      drawerOpener?.focus();
-      updateDrawerFocusTrap();
-    }, 240);
-  }, 10);
+    drawerRoot?.classList.remove('close-animating');
+    drawerRoot?.classList.remove('drawer--opened');
+    drawerOpener?.focus();
+    updateDrawerFocusTrap();
+  }, 240);
 };
 /**
  * @param {MouseEvent} e
