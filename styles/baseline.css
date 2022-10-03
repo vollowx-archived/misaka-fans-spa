@@ -94,6 +94,10 @@ video {
   vertical-align: baseline;
 }
 
+b {
+  font-weight: bold;
+}
+
 ruby {
   ruby-align: space-around;
   ruby-position: over;

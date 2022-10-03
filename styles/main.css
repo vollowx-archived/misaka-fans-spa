@@ -200,6 +200,10 @@ image-masonry div::before {
 .saying .right {
   vertical-align: bottom;
 }
+.problems {
+  border-top: 1px solid var(--md-sys-color-error);
+  border-bottom: 1px solid var(--md-sys-color-error);
+}
 
 /* State layer */
 .atk-main-editor > .atk-bottom .atk-send-btn::before,

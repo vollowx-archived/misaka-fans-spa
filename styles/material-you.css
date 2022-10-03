@@ -57,7 +57,7 @@ p {
   display: grid;
   position: relative;
   max-width: min(1024px, calc(100vw - 2 * 40px));
-  margin: 0 auto 152px;
+  margin: 0 auto 60px;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(calc(25% - 20px), 1fr));
   overflow-x: auto;
