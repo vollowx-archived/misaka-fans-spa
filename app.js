@@ -1,3 +1,5 @@
+import './styles/main.css';
+
 const routes = {
   404: { page: '/pages/404.html' },
   '/': { page: '/pages/home.html' },

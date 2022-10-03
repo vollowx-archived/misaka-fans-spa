@@ -63,8 +63,7 @@ export default class ImageMasonry extends HTMLElement {
    */
   getColNum() {
     const width = window.innerWidth;
-    const _colNum =
-      width > 1580 ? 3 : width > 1200 ? 2 : width > 1000 ? 3 : width > 900 ? 2 : width > 780 ? 3 : width > 480 ? 2 : 1;
+    const _colNum = width > 1580 ? 3 : width > 1200 ? 2 : width > 1000 ? 3 : width > 900 ? 2 : width > 780 ? 3 : width > 480 ? 2 : 1;
     return _colNum;
   }
   updColNum() {
