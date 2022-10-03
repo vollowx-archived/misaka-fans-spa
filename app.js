@@ -24,6 +24,8 @@ const routes = {
 const getRoot = () => {
   return document.querySelector('#main-contents');
 };
+/** @type {HTMLElement|null} */
+const progress = document.querySelector('.main-progress');
 /**
  * @param {string} location
  */
@@ -67,6 +69,7 @@ const runJavaScript = (root) => {
 };
 
 const renderPage = async () => {
+  progress?.removeAttribute('hidden');
   const location = window.location.pathname;
   const route = routes[location] || routes[404];
   const response = await fetch(route.page ? route.page : '/pages' + location + '.html');
@@ -76,6 +79,7 @@ const renderPage = async () => {
   root ? addClasses(root) : null;
   root ? fillSVG(root) : null;
   root ? runJavaScript(root) : null;
+  progress?.setAttribute('hidden', '');
   updateSPALinkActive(location);
 };
 
@@ -188,3 +192,4 @@ import ConCard from './components/con-card.js';
 import LinksCard from './components/links-card.js';
 import ImageMasonry from './components/image-masonry.js';
 import InvText from './components/inv-text.js';
+import LinearProgress from './components/linear-progress.js';
