@@ -1,8 +1,7 @@
-body {
-  display: flex;
-  background-color: var(--md-sys-color-background);
-  color: var(--md-sys-color-on-background);
-}
+@import url(./color-system.css);
+@import url(./elevation-system.css);
+@import url(./typography-system.css);
+
 h2,
 h4,
 h5,
@@ -138,36 +137,110 @@ a:hover {
   vertical-align: middle;
   user-select: none;
   z-index: 0;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.button.filled {
+.button:not(.tonal):not(.elevated):not(.outlined):not(.text) {
   color: var(--md-sys-color-on-primary);
   background-color: var(--md-sys-color-primary);
+}
+.button.tonal {
+  color: var(--md-sys-color-on-secondary);
+  background-color: var(--md-sys-color-secondary);
+}
+.button.elevated {
+  color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-elevation-surface-1);
+  box-shadow: var(--md-sys-elevation-shadow-1);
+}
+.button.outlined,
+.button.text {
+  color: var(--md-sys-color-primary);
+  background-color: transparent;
+}
+.button.outlined {
+  padding: 0 23px;
+  border: 1px solid var(--md-sys-color-outline);
+}
+.button.text {
+  padding: 0 12px;
+}
+@media screen and (hover: hover) {
+  .button:not(.elevated):not(.tonal):not(.outlined):not(.text):hover:not(:active),
+  .button.tonal:hover:not(:active) {
+    box-shadow: var(--md-sys-elevation-shadow-1);
+  }
+  .button.elevated:hover:not(:active) {
+    box-shadow: var(--md-sys-elevation-shadow-2);
+  }
 }
 .fab {
   position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0 16px;
-  width: 56px;
-  height: 56px;
-  font-size: 24px;
   text-decoration: none;
   border: none;
-  border-radius: 16px;
   cursor: pointer;
   vertical-align: middle;
   user-select: none;
   z-index: 0;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .fab svg {
-  width: 1em;
-  height: 1em;
+  width: var(--md-fab-icon-size);
+  height: var(--md-fab-icon-size);
   fill: currentColor;
 }
-.fab.primary {
+.fab:not(.small):not(.large) {
+  min-width: 56px;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: 16px;
+  --md-fab-icon-size: 1.5rem;
+}
+.fab.small {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: 12px;
+  --md-fab-icon-size: 1.5rem;
+}
+.fab.large {
+  min-width: 96px;
+  height: 96px;
+  padding: 0 30px;
+  border-radius: 28px;
+  --md-fab-icon-size: 2.25rem;
+}
+.fab:not(.surface):not(.secondary):not(.tertiary) {
   color: var(--md-sys-color-on-primary-container);
   background-color: var(--md-sys-color-primary-container);
+}
+.fab.surface {
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface);
+}
+.fab.secondary {
+  color: var(--md-sys-color-on-secondary-container);
+  background-color: var(--md-sys-color-secondary-container);
+}
+.fab.tertiary {
+  color: var(--md-sys-color-on-tertiary-container);
+  background-color: var(--md-sys-color-tertiary-container);
+}
+.fab:not(.lower) {
+  box-shadow: var(--md-sys-elevation-shadow-3);
+}
+.fab.lower {
+  box-shadow: var(--md-sys-elevation-shadow-1);
+}
+@media screen and (hover: hover) {
+  .fab:not(.lower):hover:not(:active) {
+    box-shadow: var(--md-sys-elevation-shadow-4);
+  }
+  .fab.lower:hover:not(:active) {
+    box-shadow: var(--md-sys-elevation-shadow-2);
+  }
 }
 .icon-button {
   position: relative;
@@ -185,6 +258,19 @@ a:hover {
   vertical-align: middle;
   user-select: none;
   z-index: 0;
+}
+.icon-button:not(.tonal):not(.outlined):not(.standard) {
+  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary);
+}
+.icon-button.tonal {
+  color: var(--md-sys-color-on-secondary);
+  background-color: var(--md-sys-color-secondary);
+}
+.icon-button.outlined {
+  color: var(--md-sys-color-on-surface);
+  background-color: transparent;
+  outline: 1px solid var(--md-sys-color-outline);
 }
 .icon-button.standard {
   color: var(--md-sys-color-primary);
@@ -208,6 +294,10 @@ linear-progress {
 }
 linear-progress[hidden] {
   opacity: 0;
+}
+[dir='rtl'] linear-progress,
+linear-progress[dir='rtl'] {
+  transform: rotateY(180deg);
 }
 .linear-progress__bar {
   position: absolute;
