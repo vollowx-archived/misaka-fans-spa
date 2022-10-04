@@ -28,6 +28,8 @@ const getRoot = () => {
 };
 /** @type {HTMLElement|null} */
 const progress = document.querySelector('.main-progress');
+/** @type {HTMLElement|null} */
+const mainAndOverview = document.querySelector('.main-and-overview');
 /**
  * @param {string} location
  */
@@ -38,17 +40,14 @@ const updateSPALinkActive = (location) => {
 /**
  * @param {HTMLElement} root
  */
-const addClasses = (root) => {
+const activeRoot = (root) => {
+  // typography
   root.querySelectorAll('h1').forEach((el) => el.classList.add('display-large'));
   root.querySelectorAll('h2').forEach((el) => el.classList.add('display-medium'));
   root.querySelectorAll('h3').forEach((el) => el.classList.add('display-small'));
   root.querySelectorAll('p, ul').forEach((el) => el.classList.add('body-large'));
   root.querySelectorAll('.block').forEach((el) => el.setAttribute('role', 'region'));
-};
-/**
- * @param {HTMLElement} root
- */
-const fillSVG = (root) => {
+  // icon
   root
     .querySelectorAll('li')
     .forEach(
@@ -57,17 +56,14 @@ const fillSVG = (root) => {
           `<svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.95843 0.279933C5.5378 -0.353974 6.58452 0.173492 6.41974 1.01632L6.05454 2.88412C5.99767 3.17501 6.09646 3.47451 6.31525 3.67447L7.72007 4.95843C8.35397 5.5378 7.82651 6.58452 6.98368 6.41974L5.11588 6.05454C4.82499 5.99767 4.52549 6.09646 4.32553 6.31525L3.04157 7.72007C2.4622 8.35397 1.41548 7.82651 1.58026 6.98368L1.94545 5.11588C2.00233 4.82499 1.90354 4.52549 1.68475 4.32553L0.279933 3.04157C-0.353974 2.4622 0.173492 1.41548 1.01632 1.58026L2.88412 1.94545C3.17501 2.00233 3.47451 1.90354 3.67447 1.68475L4.95843 0.279933Z" /></svg>` +
           el.innerHTML)
     );
-};
-/**
- * @param {HTMLElement} root
- */
-const runJavaScript = (root) => {
+  // script
   root.querySelectorAll('script[dynamic-run]').forEach((el) => {
     const runnableScriptBlock = document.createElement('script');
     runnableScriptBlock.type = 'module';
     runnableScriptBlock.textContent = el.textContent;
-    root.appendChild(runnableScriptBlock);
+    el.replaceWith(runnableScriptBlock);
   });
+  mainAndOverview?.scroll(0, 0);
 };
 
 const renderPage = async () => {
@@ -78,9 +74,7 @@ const renderPage = async () => {
   const data = await response.text();
   const root = getRoot();
   root ? (root.innerHTML = data) : null;
-  root ? addClasses(root) : null;
-  root ? fillSVG(root) : null;
-  root ? runJavaScript(root) : null;
+  root ? activeRoot(root) : null;
   progress?.setAttribute('hidden', '');
   updateSPALinkActive(location);
 };

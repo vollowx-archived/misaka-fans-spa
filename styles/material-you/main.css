@@ -35,15 +35,8 @@ p {
 .table-wrapper th {
   position: relative;
   color: var(--md-sys-color-on-surface-variant);
+  background: var(--md-sys-elevation-surface-2);
   font-weight: 500;
-}
-.table-wrapper th::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--md-sys-color-surface-tint);
-  opacity: 0.08;
-  border-radius: inherit;
 }
 .table-wrapper td:first-child,
 .table-wrapper th:first-child {
