@@ -332,14 +332,16 @@ links-card a::before {
   opacity: 0;
   pointer-events: none;
 }
-.atk-main-editor > .atk-bottom .atk-send-btn:hover::before,
-.atk-main-editor > .atk-bottom .atk-plug-btn:hover::before,
-.button:hover::before,
-.fab:hover::before,
-.icon-button:hover::before,
-.drawer li a:hover::before,
-links-card a:hover::before {
-  opacity: 0.08;
+@media screen and (hover: hover) {
+  .atk-main-editor > .atk-bottom .atk-send-btn:hover::before,
+  .atk-main-editor > .atk-bottom .atk-plug-btn:hover::before,
+  .button:hover::before,
+  .fab:hover::before,
+  .icon-button:hover::before,
+  .drawer li a:hover::before,
+  links-card a:hover::before {
+    opacity: 0.08;
+  }
 }
 .atk-main-editor > .atk-bottom .atk-send-btn:active:before,
 .atk-main-editor > .atk-bottom .atk-plug-btn:active::before,
